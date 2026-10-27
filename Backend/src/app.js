@@ -7,13 +7,19 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://jolly-gnome-0e9d3c.netlify.app3",
     credentials: true
 }))
 
 /* require all the routes here */
 const authRouter = require("./routes/auth.routes")
 const interviewRouter = require("./routes/interview.routes")
+
+app.get("/", (req, res) => {
+  res.status(200).json({
+    message: "AI Interview Preparation API is running"
+  });
+});
 
 
 /* using all the routes here */
